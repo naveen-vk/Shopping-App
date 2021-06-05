@@ -1,0 +1,126 @@
+
+<div class="cart-header">
+    <div class="cart"><h2>My Cart ({{items.length}})</h2></div>
+    </div>
+    <div class="row">
+    <aside class="col-lg-7 abc">
+        <h2 *ngIf="items.length==0" class="center">Cart is Empty</h2>
+    <div class="card" *ngFor="let item of items">
+    <div class="table-responsive">
+    <table class="table">
+    <thead>
+    <tr>
+    <th scope="col" class="border-0 bg-light">
+    <div class="p-2 px-3 text-uppercase">Product</div>
+    </th>
+    <th scope="col" class="border-0 bg-light">
+    <div class="py-2 text-uppercase">Price</div>
+    </th>
+    <th scope="col" class="border-0 bg-light">
+    <div class="py-2 text-uppercase">Quantity</div>
+     </th>
+    <th scope="col" class="border-0 bg-light">
+    <div class="py-2 text-uppercase">Remove</div>
+    </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <th scope="row" class="border-0">
+    <div class="p-2">
+    <img src="{{item.thumbnailUrl}} " alt="" width="70" class="img-fluid rounded shadow-sm">
+    <div class="ml-3 d-inline-block align-middle">
+    <h5 class="mb-0"> <a (click)="product(item.isbn)" class="text-dark d-inline-block align-middle">{{item.name}}</a></h5>
+    <div class="product-info">
+    <div class="text-muted">pages: <span class="value">{{item.pages}}</span></div>
+    <div class="text-muted">Discount: <span class="value">{{item.discount}}%</span></div>
+    </div>
+    </div>
+    </div>
+    </th>
+    <td class="border-0 align-middle"><strong>{{item.price}} {{item.currency}}</strong></td>
+    <td class="border-0 align-middle">
+    <button class="btn btn-light" (click)="inc(item.id,item.quantity)"><i class="fa fa-plus"></i></button>
+    <span>{{item.quantity}}</span>
+    <button class="btn btn-light" (click)="dec(item.id,item.quantity)" ><i class="fa fa-minus"></i></button>
+    </td>
+    <td class="border-0 align-middle">
+    <button class="btn btn-danger" (click)="onRemove(item.isbn)"><i class="fa fa-trash"></i></button>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </div> <!-- table-responsive.// -->
+    </div> <!-- card.// -->
+    </aside><!-- col.// -->
+    <aside class="col-lg-3">
+    <div class="wrapper">
+    
+    <div class="card mb-3">
+    <div class="card-body">
+    <label><i class="fa fa-gift"></i>Apply Gift card</label>
+    <div class="input-group">
+    <input type="text" class="form-control" name="" placeholder="Coupon code">
+    <span class="input-group-append">
+    <button class="btn btn-primary" (click)="soon()">Apply</button>
+    </span>
+    </div>
+    </div> <!-- card-body.// -->
+    </div> <!-- card.// -->
+    <br>
+    <div class="card mb-3">
+    <div class="card-body">
+    <h3>Delivery Address</h3>
+    <div class="input-group">
+    <div>
+    <textarea id="address" [(ngModel)]="Address" name="address" rows="3" cols="40">
+    </textarea>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card ">
+    <div class="card-body">
+    <dl class="dlist-align">
+    <dt>Total price:</dt>
+    <dd class="text-right ml-3"><strong>{{total()}}</strong></dd>
+    </dl>
+    <dl class="dlist-align">
+    <dt>Discount:</dt>
+    <dd class="text-right ml-3">{{discount()| number:'1.0-0'}}</dd>
+    </dl>
+    <dl class="dlist-align">
+    <dt>Total:</dt>
+    <dd class="text-right text-dark b ml-3"><strong>{{total()-discount()| number:'1.0-0'
+        }}</strong></dd>
+    </dl>
+    
+    <hr>
+    <p class="text-center mb-3">
+    <i class="fa fa-credit-card btn btn-light" style="font-size:24px;color:grey"></i>
+    <i class="fa fa-cc-paypal btn btn-light" style="color:royalblue;font-size:24px"></i>
+    <i class="fa fa-cc-visa btn btn-light" style="color:red;font-size:24px"></i>
+    <i class="fa fa-cc-mastercard btn btn-light" style="color:blue;font-size:24px"></i>
+    </p>
+    <button class="btn btn-primary"(click)="placeorder()"> Place order </button>&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="home()">Continue Shopping</button>
+    </div>
+    </div>
+    
+    </div>
+            <!-- col.// -->
+    </aside>
+    </div><!-- row.// -->
+    <br>
+    
+
+    
+        
+        
+    
+          
+    
+    
+    
+    

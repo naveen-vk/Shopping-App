@@ -1,0 +1,70 @@
+ 
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+    <div class="container">
+
+        <h3 style="text-align: center;">Contact Us</h3>
+        <br>
+        <i>The form can be used to contact the store or report issues and give general feedback.You can also contact us through our mail <b>bookstore@gmail.com</b> or phone number 972622281.</i><br>
+      <form class="contact-frm" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter Name" ngModel required>
+            <br>
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" name="email" class="form-control" placeholder="Enter email" ngModel required email #email="ngModel">
+          <small class="text-danger"
+          *ngIf="!email.valid && email.touched">Please Enter a Valid Email</small>
+        </div>
+        <div>
+        <label for="exampleFormControlSelect1">Subject</label>
+    <select name="subject" class="form-control" id="exampleFormControlSelect1" placeholder="Select Subject" ngModel>
+      <option>Bug Report</option>
+      <option>Complain</option>
+      <option>Feedback</option>
+      <option>Help</option>
+      <option>Query</option>
+    </select>
+    </div><br>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea  name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write something here..." ngModel></textarea>
+    </div>
+        <br>
+       <div> <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button></div>
+      </form>
+
+</div>
+</div>
+</section>
+
+
+
+<div class="faq-container">
+  <strong><h2 style="text-align: center;">F.A.Q</h2></strong>
+<div class="list-group ">
+  <ul class="list-group">
+      <li class="list-group-item"><h3><b>Ordering & Purchasing</b></h3>
+         </li>
+      <li class="list-group-item"><b>What payment methods do you accept?</b> <br>
+          We accept Visa and MasterCard on our website.
+          Our sales staff can also process other payment types manually, including checks and internet banking. To pay using one of these methods, please contact us to place your order.</li>
+      <li class="list-group-item"><b>Do you offer volume discounts?</b><br>
+          Sorry, we do not offer volume discounts direct to the public. For quantity pricing, please contact your local distributor.</li>
+      <li class="list-group-item"><b>My shipping address is in Texas, but I qualify for a tax exemption. Can I buy online?</b><br>
+          Unfortunately we can't process tax exempt orders through our website. But we're happy to process tax exempt orders offline - please contact us to place your order and send through your Resale Certificate.</li>
+      <li class="list-group-item"><b>Can I obtain a credit account and use a purchase order to shop?</b><br>
+          We are happy to supply goods on credit. To apply for a credit account you will need to fill out the following form</li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item"><h3><b>Returns</b></h3></li>
+      <li class="list-group-item"><b>What is your returns policy?</b><br>
+          Define Instruments will accept product returns for credit or exchange up to 30 DAYS after the dispatch date, provided that the returned product(s) are unused, and in original condition - complete with original documents and packaging.</li>
+      <li class="list-group-item"><b>Which products can be returned?</b><br>
+          Any item(s) purchased on our website are eligible for return, provided they are in new condition as detailed in our Returns Policy. </li>
+      <li class="list-group-item"><b>Can I get a refund for my shipping costs?</b><br>
+          We will refund your shipping costs if the product was received due to an error on our part. For change-of-mind returns, and any other return reason that is not due to an error on our part, we do not refund shipping charges</li>
+      <li class="list-group-item"><b>Vestibulum at eros</b></li>
+    </ul>
+</div>
+</div>

@@ -1,0 +1,15 @@
+<div class="cards">
+<mat-card class="example-card" *ngFor="let order of orders">
+    <mat-card-header>
+      <mat-card-title><b>Order Id:</b>{{order.OrderId}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+       
+        <p><b>Book Name:</b>&nbsp;&nbsp;&nbsp;{{order.productname}}</p>
+        <p><b>Quantity:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.quantity}}</p>
+       <p><b>Price:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.price}}</p>
+        <p><b>Delivery To:</b>&nbsp;&nbsp;&nbsp;{{order.address}}</p>
+        <p><b>Order Status:</b>&nbsp;&nbsp;<span class="text-red blink-soft">{{order.status}}</span> </p>
+    </mat-card-content>
+   
+  </mat-card></div>

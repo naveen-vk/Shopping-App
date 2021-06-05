@@ -1,0 +1,85 @@
+<h2 class="text-center">SignUp</h2>
+ <div class="container">    
+      <div class="body">
+         
+    
+     <form [formGroup]="signup" novalidate >
+        <div class="form-group">
+            <input
+            formControlName="username"
+                id="username" 
+                type="text"
+                placeholder="User Name"
+                class="form-control">
+                <div *ngIf="username && username.touched && username.invalid" class="text-danger">
+                    <div *ngIf="username.errors?.required" class="msg">Please enter the User Name</div>
+                    <div *ngIf="username.errors?.minlength || username.errors?.maxlength || username.errors?.pattern "class="msg">
+                        Accepts Alphabets, space & Min 5 to Max 30 Char</div>
+                </div>
+        </div>
+        <div class="form-group">
+            <input
+            formControlName="phnnumber"
+                id="phnnumber" 
+                type="text"
+                placeholder="phone number"
+                class="form-control">
+                <div *ngIf="phnnumber && phnnumber.touched && phnnumber.invalid" class="text-danger">
+                    <div *ngIf="phnnumber.errors?.required" class="msg">Please enter the phone number</div>
+                    <div *ngIf="phnnumber.errors?.minlength || phnnumber.errors?.maxlength || phnnumber.errors?.pattern "class="msg">
+                        Invalid phone number</div>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <input
+            formControlName="email"
+                id="email" 
+                type="text"
+                placeholder="Email"
+                class="form-control">
+                <div *ngIf="email && email.touched && email.invalid" class="text-danger">
+                    <div *ngIf="email.errors?.required" class="msg">Please enter the Mail Id</div>
+                    <div *ngIf="email.errors?.pattern "class="msg">
+                        Invalid email</div>
+                </div>
+        </div>
+        <div class="form-group">
+            <input
+            formControlName="password"
+                id="password"
+                name="password" 
+                type="password"
+                placeholder="Password"
+                (change)="onPasswordChange()"
+                class="form-control">
+                <div *ngIf="password && password.touched && password.invalid" class="text-danger">
+                    <div *ngIf="password.errors?.required" class="msg">Please enter the Password</div>
+                    <div *ngIf="password.errors?.minlength || password.errors?.maxlength ||password.errors?.pattern "class="msg">
+                        Atleast 8 characters with nummber, special character, lower and upper case</div>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <input
+            formControlName="repass"
+                id="repass" 
+                name="repass"
+                type="password"
+                placeholder="Confirm Password"
+                (change)="onPasswordChange()"
+                class="form-control">
+                <div *ngIf="repass && repass.touched && repass.invalid" class="text-danger">
+                    <div *ngIf="repass.errors?.required" class="msg">Please enter the confirm Password</div>
+                    <div *ngIf="repass.hasError('mismatch')" class="msg">
+                        Confirm password and password are not same</div>
+                </div>
+        </div>
+
+         <button type="button" class="btn btn-primary" [disabled]="signup.pristine || signup.invalid" (click)="datacapture()" >SignUp</button>&nbsp;&nbsp;&nbsp;
+         <button type="button" class="btn btn-info"(click)="moveToLogin()">Login</button>
+        </form>
+   
+ </div>
+</div>
+ 

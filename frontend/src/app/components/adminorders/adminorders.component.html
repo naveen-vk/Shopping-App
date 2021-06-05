@@ -1,0 +1,20 @@
+ 
+ <h1 class="center">Orders</h1>
+ <div class="main">
+ <mat-accordion *ngIf="orders.length > 0">
+     <mat-expansion-panel *ngFor="let post of orders">
+     <mat-expansion-panel-header>
+     <h3><b>Order ID</b>{{post.OrderId}}</h3>
+     </mat-expansion-panel-header>
+     <p><b>Book ID:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{post.isbn}}</p>
+     <p><b>Book Name:</b>&nbsp;&nbsp;&nbsp;{{post.productname}}</p>
+     <p><b>Quantity:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{post.quantity}}</p>
+    <p><b>Price:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{post.price}}</p>
+     <p><b>Delivery To:</b>&nbsp;&nbsp;&nbsp;{{post.address}}</p>
+     <button mat-button color="warn"   (click)="updatestatus(post.OrderId)">Delivered</button>
+     </mat-expansion-panel>
+ </mat-accordion>
+
+ <p class="info-text mat-body-1" *ngIf="orders.length == 0 ">No orders left to deliver</p>
+
+ </div>

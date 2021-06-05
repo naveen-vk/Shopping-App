@@ -1,0 +1,23 @@
+ img{
+    height: 50px;
+    width: 50px;
+}
+.input-group{
+    box-shadow: none;
+    border-radius: 7px;
+    order: 1.5px solid #E3E6ED;
+}
+input {
+    box-shadow: none;
+    border: 1.5px solid #E3E6ED;
+    box-shadow: none;
+    border-radius: 7px;
+    background-color: #F7F8FD;
+    letter-spacing: 1px;
+    width: 300px;
+}
+
+.fa-search {
+    background-color: #5878FF !important;
+    border-radius: 7px
+}

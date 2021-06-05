@@ -1,0 +1,61 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" routerLink="/"><img src="../../../assets/pics/logo.png "/></a>
+    <button class="navbar-toggler" type="button" (click)="togglenav()" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [class.show]="isopen" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" >
+          <a class="nav-link"routerLink="/" routerLinkActive="Active">Home</a>
+        </li>
+        
+          
+        <li class="nav-item"  *ngIf="userIsAuthenticated && !adminIsAuthenticated" >
+          <a class="nav-link" routerLink="/account" routerLinkActive="Active">Account</a>
+        </li>
+        <li class="nav-item float-right"    *ngIf="userIsAuthenticated && !adminIsAuthenticated" >
+          <a class="nav-link" routerLink="/cart" routerLinkActive="Active">Cart</a>
+        </li>
+        <li class="nav-item"  *ngIf="userIsAuthenticated && !adminIsAuthenticated" >
+          <a class="nav-link" routerLink="/orders" routerLinkActive="Active">Orders</a>
+        </li>
+        
+        <li class="nav-item"  *ngIf="userIsAuthenticated && !adminIsAuthenticated" >
+          <a class="nav-link" routerLink="/wishlist" routerLinkActive="Active">Wishlist</a>
+        </li>
+         
+         
+        <li class="nav-item" *ngIf="!adminIsAuthenticated" >
+          <a class="nav-link"routerLink="/contactus" routerLinkActive="Active">Contact Us</a>
+      </li>
+      
+        <li class="nav-item" *ngIf="!userIsAuthenticated">
+          <a class="nav-link"routerLink="/login" routerLinkActive="Active">Login</a>
+      </li>
+      
+        <li class="nav-item"  *ngIf="adminIsAuthenticated"  >
+          <a class="nav-link"routerLink="/admin" routerLinkActive="Active">AdminProducts</a>
+        </li>
+        <li class="nav-item" *ngIf="adminIsAuthenticated" >
+          <a class="nav-link"routerLink="/adminorders" routerLinkActive="Active">AdminOrders</a>
+        </li>
+        <li class="nav-item" *ngIf="adminIsAuthenticated" >
+          <a class="nav-link"routerLink="/adminfeedback" routerLinkActive="Active">Admin-Feedbacks</a>
+        </li>
+       
+        
+        <li class="nav-item float-right"  *ngIf="userIsAuthenticated">
+          <button type="button" class="btn btn-outline-danger" (click)="onLogout()">LogOut</button>
+       
+        </li>
+      </ul>
+    </div>
+    <div class="searchbar">
+      <div class="input-group lg-6" *ngIf="userIsAuthenticated && !adminIsAuthenticated"> <input type="text" placeholder="Search" aria-label="Search" [(ngModel)]="searchtext" (keydown.enter)="find(searchtext)">
+        <div class="input-group-append"><button class="btn btn-primary" (click)="find(searchtext)"><i class="fas fa-search"></i></button></div>
+        </div>
+    </div>
+  </nav>
+   
+  </nav>

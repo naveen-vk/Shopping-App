@@ -1,0 +1,27 @@
+.example-card {
+    max-width: 400px;
+    padding: 40px;
+    margin: 40px;
+     
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .blink-soft {
+    animation: blinker 1.5s linear infinite;
+    
+  }
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+ .cards{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+ }
+  

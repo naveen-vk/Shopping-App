@@ -1,0 +1,16 @@
+.main{
+    margin-top:1rem;
+    width:80%;
+    margin:auto;
+    margin-bottom: 500px;
+}
+:host{
+    display: block;
+    margin-top: 1rem;
+}
+.info-text{
+    text-align: center;
+}
+.center{
+    text-align: center;
+}

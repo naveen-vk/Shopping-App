@@ -1,0 +1,233 @@
+<div class="container">
+    <div class="row">
+        <div class="img col-md-4">
+            <div *ngIf="userIsAuthenticated" class="authnticate" (onload)= "checkwl()">
+                <span *ngIf="addedtowishlist"  class='fa-stack fa-lg float-right'>
+                    <i class='fas fa-circle fa-stack-2x'></i>
+                    <i  class='fas fa-heart fa-stack-1x fa-inverse' (click)="removefromwishlist()"></i>
+                </span>
+            </div>
+            <div *ngIf="userIsAuthenticated" class="authnticate">
+                <span *ngIf="!addedtowishlist" class='fa-stack fa-lg float-right'>
+                    <i class='fas fa-circle fa-stack-2x'></i>
+                    <i   class='far fa-heart fa-stack-1x fa-inverse' (click)="addtowishlist()"></i>
+                </span>
+            </div>
+            
+            <figure class="figure">
+                <img [src]= "product.thumbnailUrl" class="figure-img img-fluid rounded" alt="img" style="height: 350px; width: 250px;">
+            </figure>
+            <div *ngIf="userIsAuthenticated" class="authnticate">
+                <button *ngIf="!addedtocart" class="btn btn-secondary btn-lg cart" (click)="addtocart()">Add to cart</button>&nbsp;
+                <button *ngIf="addedtocart" class="btn btn-danger btn-lg cart" (click)="gotocart()" >Go to cart</button>&nbsp;
+            
+            </div>
+            <div *ngIf="!userIsAuthenticated" class="authnticate">
+                <button *ngIf="!addedtocart" class="btn btn-secondary btn-lg cart" disabled>Add to cart</button>&nbsp;
+                <button *ngIf="addedtocart" class="btn btn-success btn-lg cart" disabled>Go to cart</button>&nbsp;
+           
+            </div>
+            
+            
+        </div>  
+    
+        <div class="bookdetails col-8-12">
+
+            <div class="bname">
+                <h1>
+                    <span title={{product.title}}>{{product.title | slice: 0:25}}...
+                        <share-button class="copy"
+                            [button]="'copy'"
+                            [url]="Url"
+                            [autoSetMeta]="false"
+                        ></share-button>
+                    </span>
+                </h1>
+            </div>
+            <div class="ratings">
+                <p>
+                4.5
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                </svg>
+                </p>
+            </div>
+            <div class="price" *ngIf="product.price">
+                <strong class="fa fa-dollar" style="font-size:36px;  color: #D10024;">  {{product.price-((product.price)*(product.discount)/100) | number:'1.0-0'}}</strong>&nbsp;
+               <del> <strong style="font-size:24px; text-decoration:line-through; color: #8D99AE; ">  {{product.price | currency:'USD'}}</strong></del>&nbsp;
+            </div>
+            <div class="price" *ngIf="!product.price">
+               <strong>Out Of Stock</strong>
+            </div>
+            <div class="specifics" style="padding:20px 0px 0px 0px;">
+                <div id="authors">
+                    <span style="font-weight: 500;">Authors:</span> 
+                    &nbsp;&nbsp;{{product.authors}}
+                </div><br>
+                <div *ngIf="product.longDescription" class="descptn overflow-auto" style="width: 500px; height: 200px;">
+                    <span style="font-weight: 500;">Description:</span>&nbsp;&nbsp;
+                    {{product.longDescription}}
+                </div><br>
+                <div *ngIf="!product.longDescription" class="descptn">
+                    <span style="font-weight: 500;">Description:</span>&nbsp;&nbsp;
+                    No description given
+                </div><br>
+                <div class="moredetails">
+                        <table> 
+                            <tr class="categories">
+                                <td style="font-weight: 500;">CATEGORY:</td>
+                                <td>{{product.categories}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 500;">ISBN no:</td>
+                                <td>{{product.isbn}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 500;">PAGES:</td>
+                                <td>{{product.pageCount}}</td>
+                            </tr>
+                        </table>
+                </div>
+               
+            </div>
+
+        </div>
+
+    </div>
+    <div class="review">
+    <h2 id="headings">REVIEWS & RATINGS :</h2>
+    <div class="row">
+        <!-- Rating -->
+        <div class="col-md-3">
+            <div id="rating">
+                <div class="rating-avg">
+                    <span>4.5</span>
+                    <div class="rating-stars">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                </div>
+                <ul class="rating">
+                    <li>
+                        <div class="rating-stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="rating-progress">
+                            <div style="width: 80%;"></div>
+                        </div>
+                        <span class="sum">3</span>
+                    </li>
+                    <li>
+                        <div class="rating-stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div class="rating-progress">
+                            <div style="width: 60%;"></div>
+                        </div>
+                        <span class="sum">2</span>
+                    </li>
+                    <li>
+                        <div class="rating-stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div class="rating-progress">
+                            <div></div>
+                        </div>
+                        <span class="sum">0</span>
+                    </li>
+                    <li>
+                        <div class="rating-stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div class="rating-progress">
+                            <div></div>
+                        </div>
+                        <span class="sum">0</span>
+                    </li>
+                    <li>
+                        <div class="rating-stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <div class="rating-progress">
+                            <div></div>
+                        </div>
+                        <span class="sum">0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-6" *ngIf="reviews.length >0">
+            <div id="reviews">
+                <ul class="reviews" *ngFor="let review of reviews">
+                    <li>
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle style="color: #D10024;">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  {{review.userName}}&nbsp;&nbsp;&nbsp;
+                                  <span>
+                                    {{review.rating}}
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+                              <p>{{review.review}}</p>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Review Form -->
+        <div class="col-md-3">
+            <div id="review-form">
+                <form [formGroup]="reviewForm" class="review-form">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Your Name" formControlName="username">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" placeholder="Your Email" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Your Review" formControlName="review"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" min="1" max="5" placeholder="Your Rating" formControlName="rating">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-lg btn-block" (click)="addreview()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /Review Form -->
+    </div>
+</div>
+
+
+</div>

@@ -1,0 +1,16 @@
+.container{
+    margin-bottom: 200px;
+    margin-top: 50px;
+   display: flex;
+   justify-content: center;
+}
+
+input{
+    width: 450px;
+}
+h2{
+    margin-top: 50px;
+}
+input.ng-touched.ng-invalid{
+    border-color: red;
+}

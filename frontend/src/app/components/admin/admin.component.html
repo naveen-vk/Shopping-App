@@ -1,0 +1,180 @@
+<div class="container">    
+    <div class="body">
+        <div class="form-group">
+            <input type="text"  class="form-control abc" placeholder="Search Here" [(ngModel)]="searchtext" (keydown.enter)="find(searchtext)">
+        </div>
+    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">isbn</th>
+                    <th scope="col">title</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of searched">
+                    <td>{{item.isbn}}</td>
+                    <td>{{item.title}}</td>
+                    <td><button mat-button color="accent" (click)="showdata(item.isbn)" >Edit</button></td>
+                    <td><button mat-button color="warn" (click)="bookdelete(item.isbn)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+   <h2 class="text-center">Add Book</h2>
+   <form [formGroup]="addbook" novalidate >
+      <div class="form-group">
+        <label for="title">Title of the Book</label>
+          <input
+          formControlName="title"
+              id="title" 
+              type="text"
+              placeholder="Title"
+              class="form-control">
+              <div *ngIf="title && title.touched && title.invalid" class="text-danger">
+                  <div *ngIf="title.errors?.required" class="msg">Please enter the Title of the book</div>
+              </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="pageCount">Page Count</label>
+          <input
+          formControlName="pageCount"
+              id="pageCount" 
+              type="text"
+              placeholder="Page Count"
+              class="form-control">
+              <div *ngIf="pageCount && pageCount.touched && pageCount.invalid" class="text-danger">
+                  <div *ngIf="pageCount.errors?.required" class="msg">Please enter the page count</div>
+                   
+              </div>
+      </div>
+      <div class="form-group">
+        <label for="publishdate">Published Date</label>
+        <input
+        formControlName="publishdate"
+            id="publishdate" 
+            type="date"
+            placeholder="Publish Date"
+            class="form-control">
+            <div *ngIf="publishdate && publishdate.touched && publishdate.invalid" class="text-danger">
+                <div *ngIf="publishdate.errors?.required" class="msg">Please select the published date</div>
+                 
+            </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="thumbnailUrl">Thumbnail Url</label>
+        <input
+        formControlName="thumbnailUrl"
+            id="thumbnailUrl" 
+            type="text"
+            placeholder="thumbnail Url"
+            class="form-control">
+            <div *ngIf="thumbnailUrl && thumbnailUrl.touched && thumbnailUrl.invalid" class="text-danger">
+                <div *ngIf="thumbnailUrl.errors?.required" class="msg">Please select the Url</div>
+                 
+            </div>
+    </div>
+    <div class="form-group">
+        <label for="shortDescription">Short Description</label>
+        <textarea
+        formControlName="shortDescription"
+            id="shortDescription" 
+            placeholder="Short Description"
+            class="form-control"></textarea>
+            <div *ngIf="shortDescription && shortDescription.touched && shortDescription.invalid" class="text-danger">
+                <div *ngIf="shortDescription.errors?.required" class="msg">Please enter a short Description</div>
+                 
+            </div>
+    </div>
+
+    <div class="form-group">
+        <label for="longDescription">Long Description</label>
+        <textarea
+        formControlName="longDescription"
+            id="longDescription" 
+            placeholder="Long Description"
+            class="form-control"></textarea>
+            <div *ngIf="longDescription && longDescription.touched && longDescription.invalid" class="text-danger">
+                <div *ngIf="longDescription.errors?.required" class="msg">Please enter a long Description</div>
+                 
+            </div>
+    </div>
+    
+ 
+
+
+    <div class="form-group">
+        <label for="authors">Author</label>
+        <input
+        formControlName="authors"
+            id="authors" 
+            placeholder="author name"
+            class="form-control"> 
+            <div *ngIf="authors && authors.touched && authors.invalid" class="text-danger">
+                <div *ngIf="authors.errors?.required" class="msg">Please enter a author name</div>
+                 
+            </div>
+    </div>
+
+    
+    <div class="form-group">
+        <label for="categories">Category</label>
+        <input
+        formControlName="categories"
+            id="categories" 
+            placeholder="enter the Categories"
+            class="form-control"> 
+            <div *ngIf="categories && categories.touched && categories.invalid" class="text-danger">
+                <div *ngIf="categories.errors?.required" class="msg">Please enter the category</div>
+                 
+            </div>
+    </div>
+
+       
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input
+        formControlName="price"
+            id="price" 
+            placeholder=" Price"
+            class="form-control"> 
+            <div *ngIf="price && price.touched && price.invalid" class="text-danger">
+                <div *ngIf="price.errors?.required" class="msg">Please enter the price</div>
+                 
+            </div>
+    </div>
+    <div class="form-group">
+        <label for="currency">Currency</label>
+        <input
+        formControlName="currency"
+            id="currency" 
+            placeholder="Currency"
+            class="form-control"> 
+            <div *ngIf="currency && currency.touched && currency.invalid" class="text-danger">
+                <div *ngIf="currency.errors?.required" class="msg">Please enter a currency</div>
+                 
+            </div>
+    </div>
+    <div class="form-group">
+        <label for="discount">Discount</label>
+        <input
+        formControlName="discount"
+            id="discount" 
+            placeholder="Discount"
+            class="form-control"> 
+            <div *ngIf="discount && discount.touched && discount.invalid" class="text-danger">
+                <div *ngIf="discount.errors?.required" class="msg">Please enter Discount</div>
+                 
+            </div>
+    </div>
+      
+    <button type="button" class="btn btn-primary" [disabled]="addbook.pristine || addbook.invalid" (click)="datacapture()">Add Book</button>&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary" (click)="updateproduct()"  >Update Book</button>
+     
+      </form>
+</div>
+</div>
+
+

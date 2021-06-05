@@ -1,0 +1,16 @@
+.contact-frm{
+    padding:10px;
+    border: 2px black solid;
+    border-radius: 5px;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched{
+    border: 1px solid rgb(241, 50, 50);
+    box-shadow: 0 0 9px inset rgb(226, 99, 99);
+}
+.faq-container{
+    margin-left: 120px;
+    margin-top: 50px;
+    margin-right: 50px;
+}

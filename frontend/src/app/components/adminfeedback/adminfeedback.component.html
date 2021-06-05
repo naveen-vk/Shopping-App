@@ -1,0 +1,18 @@
+<h1 class="center">Feedbacks</h1>
+ <div class="main">
+ <mat-accordion >
+     <mat-expansion-panel *ngFor="let post of feedback"  >
+     <mat-expansion-panel-header>
+     <h3><b>Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{post.name}}</h3>
+     </mat-expansion-panel-header>
+     <p><b>UserID:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{post.email}}</p>
+     <p><b>Subject:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{post.subject}}</p>
+     <p><b>Description:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{post.desc}}</p>
+
+ <button mat-button color="warn"   (click)="updatestatus(post.email)">Resolved</button>
+     </mat-expansion-panel>
+ </mat-accordion>
+
+
+
+ </div>

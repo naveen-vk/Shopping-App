@@ -1,0 +1,23 @@
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-header .cart{
+    margin: 10px 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.wrapper
+{
+    width:500px;
+}
+.mb-0{
+    cursor: pointer;
+}
+.abc{
+    height:600px ;
+    overflow: auto;
+}
+.center{
+    text-align: center;
+}
